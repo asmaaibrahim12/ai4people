@@ -103,22 +103,6 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94)
 }
 .avatar-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 3px; text-align: center; }
 .avatar-role { font-size: 12px; color: var(--ink-3); text-align: center; font-weight: 300; line-height: 1.5; }
-/* STATS ROW */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 32px 0 0;
-}
-.stat-card {
-  background: var(--surface-2);
-  border-radius: var(--radius);
-  padding: 18px 16px;
-  text-align: center;
-  border: 1px solid var(--border);
-}
-.stat-num { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--orange); line-height: 1; margin-bottom: 5px; }
-.stat-label { font-size: 12px; color: var(--ink-3); font-weight: 300; line-height: 1.4; }
 /* DIVIDER */
 .divider { border: none; border-top: 1px solid var(--border); max-width: calc(var(--max) - 72px); margin: 0 auto; }
 /* SECTION */
@@ -127,35 +111,6 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94)
 .section-title { font-family: var(--serif); font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
 .section-kicker { font-size: 13px; color: var(--ink-4); font-weight: 300; }
 .section-intro { font-size: 15px; color: var(--ink-3); line-height: 1.7; max-width: 580px; margin-bottom: 32px; font-weight: 300; }
-/* WILDERA */
-.wildera-strip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 22px 28px;
-  margin-bottom: 52px;
-  border: 1px solid var(--border-md);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  text-decoration: none;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.18s;
-}
-.wildera-strip:hover { border-color: var(--orange-mid); box-shadow: 0 4px 16px rgba(232,96,10,0.08); transform: translateY(-1px); }
-.wildera-strip-left { display: flex; align-items: center; gap: 16px; }
-.wildera-strip-logo {
-  width: 40px; height: 40px;
-  border-radius: var(--radius);
-  background: var(--ink);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  font-family: var(--serif);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--orange);
-}
-.wildera-strip-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
-.wildera-strip-desc { font-size: 13px; color: var(--ink-3); font-weight: 300; }
 /* SPEAKING */
 .speaking-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 52px; }
 .speaking-card {
@@ -220,11 +175,9 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
 @media (max-width: 760px) {
   .about-hero { grid-template-columns: 1fr; padding: 44px 20px 36px; }
   .avatar-wrap { display: none; }
-  .stats-row { grid-template-columns: repeat(3, 1fr); }
   .section { padding: 0 20px; }
   .divider { max-width: calc(100% - 40px); }
   .speaking-grid { grid-template-columns: 1fr; }
-  .wildera-inner { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; padding: 32px 20px; }
   .footer-bottom { padding: 14px 20px; }
   .nav-inner { padding: 0 20px; }
@@ -251,13 +204,12 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
   <div>
     <div class="hero-eyebrow">
       <span class="chip chip-orange">Author</span>
-      <span class="chip chip-teal">Founder</span>
       <span class="chip chip-blue">Strategist</span>
     </div>
     <h1>Asmaa <em>Ibrahim</em></h1>
-    <p class="about-title-sub">Product Strategist · AI Author · Founder, Wildera Labs</p>
+    <p class="about-title-sub">Product Strategist · AI Author</p>
     <p class="about-lead">
-      Asmaa Ibrahim spent over a decade shipping <strong>AI-powered products</strong> at Google and Vodafone before leaving to found her AI-native startup, <strong>Wildera Labs</strong>. Her work sits at the intersection of human-centred design, responsible AI, and large-scale product delivery.
+      Asmaa Ibrahim spent over a decade shipping <strong>AI-powered products</strong> at Google and Vodafone. Her work sits at the intersection of human-centred design, responsible AI, and large-scale product delivery.
     </p>
     <p class="about-lead">
       Her book, <strong>Making AI Work for People</strong>, distils that decade of experience into the PRESS Framework — a practical, reproducible approach for teams building AI products that are ethical, explainable, and built to last.
@@ -274,11 +226,6 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
 <hr class="divider">
 <!-- SPEAKING -->
 <div id="speaking" class="section">
-  <div class="section-head">
-    <h2 class="section-title">Speaking & Advisory</h2>
-    <span class="section-kicker">Bringing the conversation to your stage or organisation</span>
-  </div>
-  <p class="section-intro">Asmaa speaks at conferences, corporate events, and leadership off-sites on the intersection of AI, product strategy, and responsible technology.</p>
   <div class="speaking-grid">
     <div class="speaking-card">
       <div class="speaking-icon si-orange">
