@@ -70,7 +70,7 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94)
 /* Avatar placeholder */
 .avatar-wrap { padding-top: 8px; }
 .avatar-card {
-  width: 100%;
+  width: 180px;
   aspect-ratio: 3/4;
   border-radius: var(--radius-lg);
   background: linear-gradient(160deg, #E8F4F8 0%, #D4ECF0 50%, #C8E8E4 100%);
@@ -84,25 +84,17 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94)
   border: 1px solid var(--border);
   box-shadow: 0 8px 32px rgba(17,18,20,0.10);
 }
-.avatar-initials {
+.avatar-photo {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -65%);
-  width: 90px; height: 90px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--orange), var(--teal));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--serif);
-  font-size: 32px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: -0.02em;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
-.avatar-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 3px; text-align: center; }
-.avatar-role { font-size: 12px; color: var(--ink-3); text-align: center; font-weight: 300; line-height: 1.5; }
+.avatar-name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 3px; text-align: center; position: relative; z-index: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+.avatar-role { font-size: 12px; color: rgba(255,255,255,0.9); text-align: center; font-weight: 300; line-height: 1.5; position: relative; z-index: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
 /* STATS ROW */
 .stats-row {
   display: grid;
@@ -265,7 +257,7 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
   </div>
   <div class="avatar-wrap">
     <div class="avatar-card">
-      <div class="avatar-initials">AI</div>
+      <img src="images/professional_linkedin.png" alt="Asmaa Ibrahim" class="avatar-photo">
       <div class="avatar-name">Asmaa Ibrahim</div>
       <div class="avatar-role">Product Strategist<br>& AI Author</div>
     </div>
