@@ -434,10 +434,14 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
         body: JSON.stringify({
           access_key: 'beea8436-a90e-4494-b8af-d39266ff516e',
           subject: 'New artifact notify signup',
-          email: val
+          from_name: 'Artifact Notify Form',
+          replyto: val,
+          email: val,
+          message: 'New signup for artifact notifications: ' + val
         })
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
         btn.textContent = "You're on the list!";
         btn.style.background = 'var(--teal)';
         input.disabled = true;
