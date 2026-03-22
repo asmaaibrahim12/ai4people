@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var links = document.querySelectorAll('.nav-links a');
   links.forEach(function (link) {
     link.addEventListener('click', function () {
-      navLinks.classList.remove('open');
+      if (navLinks) navLinks.classList.remove('open');
     });
   });
 
@@ -26,6 +26,44 @@ document.addEventListener('DOMContentLoaded', function () {
       anchor.classList.add('active');
     }
   });
+
+  // Tab switching
+  var tabLinks = document.querySelectorAll('.tab-link');
+  var tabContents = document.querySelectorAll('.tab-content');
+
+  if (tabLinks.length > 0) {
+    tabLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var targetTab = this.getAttribute('data-tab');
+
+        // Update active tab link
+        tabLinks.forEach(function (t) { t.classList.remove('active'); });
+        this.classList.add('active');
+
+        // Show target content
+        tabContents.forEach(function (content) {
+          content.classList.remove('active');
+        });
+        var target = document.getElementById(targetTab);
+        if (target) {
+          target.classList.add('active');
+        }
+
+        // Update URL hash
+        history.replaceState(null, null, '#' + targetTab);
+      });
+    });
+
+    // Handle hash on page load
+    var hash = window.location.hash.replace('#', '');
+    if (hash) {
+      var matchingTab = document.querySelector('.tab-link[data-tab="' + hash + '"]');
+      if (matchingTab) {
+        matchingTab.click();
+      }
+    }
+  }
 });
 
 // Simple contact form handler
@@ -42,4 +80,19 @@ function handleContactForm(event) {
 
   alert('Thank you for your message, ' + name + '! We will get back to you soon.');
   form.reset();
+}
+
+// Notify form handler
+function handleNotify() {
+  var input = document.getElementById('notify-email');
+  if (!input) return;
+
+  var email = input.value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  alert('Thanks! We\'ll notify you at ' + email + ' when artifacts are ready.');
+  input.value = '';
 }
