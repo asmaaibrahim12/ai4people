@@ -1,168 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact Asmaa Ibrahim - author of Making AI Work for People. Reach out for speaking, media, collaboration, or general inquiries.">
-  <title>Contact - Making AI Work for People | Asmaa Ibrahim</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – Making AI Work for People | Asmaa Ibrahim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --orange:       #E8600A;
+  --orange-light: #FDF0E8;
+  --orange-mid:   #F5C4A0;
+  --pink:         #D63670;
+  --pink-light:   #FCE8F1;
+  --blue:         #2E6CB8;
+  --blue-light:   #E7F0FB;
+  --blue-mid:     #A8C4E8;
+  --teal:         #1A9E8C;
+  --teal-light:   #E4F5F2;
+  --teal-mid:     #7DCDC3;
+  --ink:          #111214;
+  --ink-2:        #3D4045;
+  --ink-3:        #7A7E85;
+  --ink-4:        #B0B4BA;
+  --surface:      #FFFFFF;
+  --surface-2:    #F7F8FA;
+  --surface-3:    #EFF1F4;
+  --border:       rgba(17,18,20,0.10);
+  --border-md:    rgba(17,18,20,0.18);
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'Sora', system-ui, sans-serif;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --max: 1000px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--surface); color: var(--ink); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 36px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--teal)); }
+.nav-links { display: flex; gap: 6px; list-style: none; }
+.nav-links a { font-size: 13.5px; font-weight: 400; color: var(--ink-3); text-decoration: none; padding: 6px 14px; border-radius: 20px; transition: color 0.15s, background 0.15s; }
+.nav-links a:hover { color: var(--ink); background: var(--surface-2); }
+.nav-links a.active { color: var(--ink); background: var(--surface-3); font-weight: 500; }
+/* PAGE LAYOUT */
+.contact-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 72px 36px 80px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 64px;
+  align-items: start;
+}
+/* LEFT — header + cards */
+.contact-header { margin-bottom: 40px; }
+.contact-eyebrow {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+.contact-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.contact-header p {
+  font-size: 15px;
+  color: var(--ink-3);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 420px;
+}
+/* REASON CARDS */
+.reason-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+.reason-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  cursor: default;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.reason-card:hover { border-color: var(--border-md); box-shadow: 0 4px 14px rgba(17,18,20,0.06); }
+.reason-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.ri-orange { background: var(--orange-light); }
+.ri-teal   { background: var(--teal-light); }
+.ri-blue   { background: var(--blue-light); }
+.ri-pink   { background: var(--pink-light); }
+.reason-body { }
+.reason-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.reason-desc { font-size: 13px; color: var(--ink-3); font-weight: 300; line-height: 1.55; }
+/* SOCIAL LINKS */
+.social-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ink-4); margin-bottom: 12px; }
+.social-links { display: flex; gap: 8px; }
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-md);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-2);
+  text-decoration: none;
+  background: var(--surface);
+  transition: all 0.18s;
+}
+.social-link:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-light); transform: translateY(-1px); }
+/* RIGHT — FORM */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius-lg);
+  padding: 32px 30px;
+  box-shadow: 0 4px 24px rgba(17,18,20,0.07);
+  position: sticky;
+  top: 82px;
+}
+.form-title { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.2; }
+.form-sub { font-size: 13.5px; color: var(--ink-3); margin-bottom: 24px; font-weight: 300; line-height: 1.55; }
+.form-group { margin-bottom: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--surface);
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(232,96,10,0.12);
+}
+input::placeholder, textarea::placeholder { color: var(--ink-4); }
+select { background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%237A7E85' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+.form-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+.btn-submit {
+  width: 100%;
+  padding: 12px 22px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
+  letter-spacing: -0.01em;
+}
+.btn-submit:hover { background: #d05508; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,96,10,0.3); }
+.btn-submit:active { transform: translateY(0); }
+.form-note { font-size: 11.5px; color: var(--ink-4); text-align: center; margin-top: 12px; font-weight: 300; }
+/* SUCCESS STATE */
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 20px;
+  gap: 14px;
+}
+.success-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--teal-light);
+  display: flex; align-items: center; justify-content: center;
+}
+.success-title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ink); }
+.success-sub { font-size: 14px; color: var(--ink-3); font-weight: 300; line-height: 1.6; }
+/* FOOTER */
+footer { border-top: 1px solid var(--border); background: var(--surface-2); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 44px 36px 36px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+.footer-logo { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 10px; display: flex; align-items: center; gap: 7px; }
+.footer-logo-dot { width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--teal)); }
+.footer-tagline { font-size: 13px; color: var(--ink-3); line-height: 1.65; max-width: 280px; font-weight: 300; }
+.footer-col-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ink-4); margin-bottom: 14px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 9px; }
+.footer-links a { font-size: 14px; color: var(--ink-2); text-decoration: none; font-weight: 300; transition: color 0.15s; }
+.footer-links a:hover { color: var(--orange); }
+.footer-bottom { max-width: var(--max); margin: 0 auto; padding: 16px 36px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { font-size: 12px; color: var(--ink-4); font-weight: 300; }
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.contact-wrap { animation: fadeUp 0.5s ease both; }
+/* RESPONSIVE */
+@media (max-width: 760px) {
+  .contact-wrap { grid-template-columns: 1fr; padding: 44px 20px 56px; gap: 36px; }
+  .form-card { position: static; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; padding: 32px 20px; }
+  .footer-bottom { padding: 14px 20px; }
+  .nav-inner { padding: 0 20px; }
+  .social-links { flex-wrap: wrap; }
+}
+</style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="artifacts.html" class="logo"><span class="logo-dot"></span>AI4People</a>
-      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-      <ul class="nav-links">
-        <li><a href="artifacts.html" class="nav-pill">The Book</a></li>
+<nav>
+  <div class="nav-inner">
+    <a href="artifacts.html" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      AI4People
+    </a>
+    <ul class="nav-links">
+      <li><a href="artifacts.html">The Book</a></li>
+      <li><a href="author.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="contact-wrap">
+  <!-- LEFT -->
+  <div>
+    <div class="contact-header">
+      <div class="contact-eyebrow">Get in touch</div>
+      <h1>Let's talk about<br>what you're building</h1>
+      <p>Whether you're working on an AI product, planning a speaking event, or exploring advisory work — Asmaa would love to hear from you.</p>
+    </div>
+    <div class="reason-cards">
+      <div class="reason-card">
+        <div class="reason-icon ri-orange">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8600A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="reason-body">
+          <div class="reason-title">Speaking & keynotes</div>
+          <div class="reason-desc">Invite Asmaa to speak at your conference, summit, or corporate event on responsible AI and human-centred product design.</div>
+        </div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon ri-teal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A9E8C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="reason-body">
+          <div class="reason-title">PRESS Framework workshops</div>
+          <div class="reason-desc">Hands-on training for your product, engineering, or leadership team — applying the five PRESS principles to your actual products.</div>
+        </div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon ri-blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E6CB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="reason-body">
+          <div class="reason-title">Advisory & consulting</div>
+          <div class="reason-desc">Strategic advisory for startups and enterprises building AI products — from responsible AI governance to go-to-market execution.</div>
+        </div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon ri-pink">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D63670" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <div class="reason-body">
+          <div class="reason-title">Book & media enquiries</div>
+          <div class="reason-desc">Press, podcast interviews, bulk book orders, or questions about the PRESS Framework and its application.</div>
+        </div>
+      </div>
+    </div>
+    <div class="social-title">Connect directly</div>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/asmaa-ibrahim/" target="_blank" rel="noopener" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" target="_blank" rel="noopener" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Buy the book
+      </a>
+    </div>
+  </div>
+  <!-- RIGHT — FORM -->
+  <div>
+    <div class="form-card" id="formCard">
+      <div id="formBody">
+        <div class="form-title">Send a message</div>
+        <div class="form-sub">Asmaa reads every message personally and typically replies within 2–3 business days.</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="jane@company.com">
+        </div>
+        <div class="form-group">
+          <label for="org">Organisation</label>
+          <input type="text" id="org" placeholder="Optional">
+        </div>
+        <div class="form-group">
+          <label for="reason">Reason for contact</label>
+          <select id="reason">
+            <option value="" disabled selected>Select a topic</option>
+            <option>Speaking or keynote</option>
+            <option>PRESS Framework workshop</option>
+            <option>Advisory or consulting</option>
+            <option>Book or media enquiry</option>
+            <option>General question</option>
+          </select>
+        </div>
+        <hr class="form-divider">
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell Asmaa a bit about what you're working on and how she can help..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleSubmit()">Send message</button>
+        <div class="form-note">No spam, ever. Your details are used only to respond to your enquiry.</div>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A9E8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="success-title">Message sent!</div>
+        <div class="success-sub">Thanks for reaching out. Asmaa will be in touch within 2–3 business days.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo"><span class="footer-logo-dot"></span>AI4People</div>
+      <p class="footer-tagline">Making AI Work for People — a practical framework for designing and building impactful AI-powered applications. By Asmaa Ibrahim. Published by Wiley.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Pages</div>
+      <ul class="footer-links">
+        <li><a href="artifacts.html">The Book</a></li>
         <li><a href="author.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
-  </nav>
-
-  <!-- Page Header -->
-  <section class="hero" style="padding: 4rem 0;">
-    <div class="container" style="text-align: center;">
-      <h1>Contact Us</h1>
-      <p style="max-width: 650px; margin: 1rem auto 0; opacity: 0.9; font-size: 1.15rem;">Have a question, speaking request, or collaboration idea? We'd love to hear from you.</p>
+    <div>
+      <div class="footer-col-title">Get the book</div>
+      <ul class="footer-links">
+        <li><a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" target="_blank" rel="noopener">Amazon</a></li>
+        <li><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394406463" target="_blank" rel="noopener">Wiley Online</a></li>
+        <li><a href="https://www.linkedin.com/in/asmaa-ibrahim/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Contact Form & Info -->
-  <section class="section">
-    <div class="container">
-      <div class="contact-grid">
-        <div>
-          <h2>Send a Message</h2>
-          <form onsubmit="handleContactForm(event)" style="margin-top: 1.5rem;">
-            <div class="form-group">
-              <label for="name">Full Name *</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <select id="subject" name="subject">
-                <option value="general">General Inquiry</option>
-                <option value="speaking">Speaking Engagement</option>
-                <option value="media">Media / Interview</option>
-                <option value="collaboration">Collaboration</option>
-                <option value="feedback">Book Feedback</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Message *</label>
-              <textarea id="message" name="message" placeholder="Tell us how we can help..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-          </form>
-        </div>
-        <div>
-          <div class="contact-info-card">
-            <h3>Get in Touch</h3>
-            <div class="contact-info-item">
-              <span>&#127760;</span>
-              <span>ai4people.tech</span>
-            </div>
-            <div class="contact-info-item">
-              <span>&#128279;</span>
-              <a href="https://www.linkedin.com/in/asmaa-ibrahim/" target="_blank" rel="noopener">LinkedIn &#8212; Asmaa Ibrahim</a>
-            </div>
-          </div>
-
-          <div class="contact-info-card">
-            <h3>Speaking &amp; Media</h3>
-            <p>Asmaa is available for keynote speaking, panel discussions, workshops, and media interviews on topics including:</p>
-            <ul style="margin-top: 0.75rem; padding-left: 1.25rem; color: var(--text-light);">
-              <li>Human-centered AI and the PRESS framework</li>
-              <li>Responsible AI product development</li>
-              <li>AI-driven digital transformation</li>
-              <li>Human-AI collaboration</li>
-            </ul>
-            <p style="margin-top: 0.75rem;">Please select the appropriate subject in the contact form and we'll respond within 2-3 business days.</p>
-          </div>
-
-          <div class="contact-info-card">
-            <h3>Buy the Book</h3>
-            <div class="contact-info-item">
-              <span>&#128218;</span>
-              <a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" target="_blank" rel="noopener">Amazon</a>
-            </div>
-            <div class="contact-info-item">
-              <span>&#128218;</span>
-              <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394406463" target="_blank" rel="noopener">Wiley Online Library</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <h2>Frequently Asked Questions</h2>
-      </div>
-      <div class="artifact-list" style="max-width: 800px; margin: 0 auto;">
-        <div class="artifact-item">
-          <h3>Where can I purchase the book?</h3>
-          <p>Making AI Work for People is available on <a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" target="_blank" rel="noopener">Amazon</a>, <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394406463" target="_blank" rel="noopener">Wiley Online Library</a>, and other major book retailers worldwide. ISBN: 978-1394392094.</p>
-        </div>
-        <div class="artifact-item">
-          <h3>Can I use the PRESS framework in my organization?</h3>
-          <p>Yes! The PRESS framework and other artifacts are designed for practical use. The book provides full implementation guidance for applying them in your AI projects.</p>
-        </div>
-        <div class="artifact-item">
-          <h3>Is Asmaa available for consulting or workshops?</h3>
-          <p>For consulting and workshop inquiries, please use the contact form with "Collaboration" selected as the subject. We'll discuss scope and availability.</p>
-        </div>
-        <div class="artifact-item">
-          <h3>How can I report an error in the book?</h3>
-          <p>We appreciate feedback! Please send a message via the contact form with "Book Feedback" selected, and include the page number and details.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo"><span class="logo-dot"></span><strong>AI4People</strong></div>
-          <p>Making AI Work for People &mdash; a practical framework for designing and building impactful AI-powered applications. By Asmaa Ibrahim. Published by Wiley.</p>
-        </div>
-        <div>
-          <h4>PAGES</h4>
-          <ul class="footer-links">
-            <li><a href="artifacts.html">The Book</a></li>
-            <li><a href="author.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>GET THE BOOK</h4>
-          <ul class="footer-links">
-            <li><a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" target="_blank" rel="noopener">Amazon</a></li>
-            <li><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394406463" target="_blank" rel="noopener">Wiley Online</a></li>
-            <li><a href="https://www.linkedin.com/in/asmaa-ibrahim/" target="_blank" rel="noopener">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Making AI Work for People by Asmaa Ibrahim. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Making AI Work for People by Asmaa Ibrahim. All rights reserved.</span>
+  </div>
+</footer>
+<script>
+function handleSubmit() {
+  const email = document.getElementById('email').value.trim();
+  const fname = document.getElementById('fname').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const reason = document.getElementById('reason').value;
+  if (!fname || !email || !email.includes('@') || !message || !reason) {
+    [
+      { id: 'fname', val: fname },
+      { id: 'email', val: email && email.includes('@') ? email : '' },
+      { id: 'message', val: message },
+      { id: 'reason', val: reason }
+    ].forEach(({ id, val }) => {
+      const el = document.getElementById(id);
+      if (!val) {
+        el.style.borderColor = 'rgba(232,96,10,0.7)';
+        el.addEventListener('input', () => el.style.borderColor = '', { once: true });
+      }
+    });
+    return;
+  }
+  document.getElementById('formBody').style.display = 'none';
+  const success = document.getElementById('formSuccess');
+  success.style.display = 'flex';
+}
+</script>
 </body>
 </html>

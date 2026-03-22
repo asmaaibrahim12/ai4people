@@ -1,168 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Asmaa Ibrahim - author of Making AI Work for People, product strategist with 15+ years in high tech, and founder of Wildera Labs.">
-  <title>About the Author - Asmaa Ibrahim | Making AI Work for People</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Asmaa Ibrahim – Making AI Work for People</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --orange:       #E8600A;
+  --orange-light: #FDF0E8;
+  --orange-mid:   #F5C4A0;
+  --pink:         #D63670;
+  --pink-light:   #FCE8F1;
+  --blue:         #2E6CB8;
+  --blue-light:   #E7F0FB;
+  --blue-mid:     #A8C4E8;
+  --teal:         #1A9E8C;
+  --teal-light:   #E4F5F2;
+  --teal-mid:     #7DCDC3;
+  --ink:          #111214;
+  --ink-2:        #3D4045;
+  --ink-3:        #7A7E85;
+  --ink-4:        #B0B4BA;
+  --surface:      #FFFFFF;
+  --surface-2:    #F7F8FA;
+  --surface-3:    #EFF1F4;
+  --border:       rgba(17,18,20,0.10);
+  --border-md:    rgba(17,18,20,0.18);
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'Sora', system-ui, sans-serif;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --max: 1000px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--surface); color: var(--ink); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 36px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--teal)); }
+.nav-links { display: flex; gap: 6px; list-style: none; }
+.nav-links a { font-size: 13.5px; font-weight: 400; color: var(--ink-3); text-decoration: none; padding: 6px 14px; border-radius: 20px; transition: color 0.15s, background 0.15s; }
+.nav-links a:hover { color: var(--ink); background: var(--surface-2); }
+.nav-links a.active { color: var(--ink); background: var(--surface-3); font-weight: 500; }
+/* HERO */
+.about-hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 72px 36px 64px;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 64px;
+  align-items: start;
+}
+.hero-eyebrow { display: flex; gap: 8px; margin-bottom: 22px; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.04em; padding: 4px 12px; border-radius: 20px; border: 1px solid; }
+.chip-orange { background: var(--orange-light); color: var(--orange); border-color: var(--orange-mid); }
+.chip-teal   { background: var(--teal-light);   color: var(--teal);   border-color: var(--teal-mid); }
+.chip-blue   { background: var(--blue-light);   color: var(--blue);   border-color: var(--blue-mid); }
+.about-hero h1 { font-family: var(--serif); font-size: clamp(30px, 4vw, 44px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 6px; }
+.about-hero h1 em { font-style: italic; color: var(--orange); }
+.about-title-sub { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--ink-3); margin-bottom: 24px; }
+.about-lead { font-size: 15.5px; color: var(--ink-2); line-height: 1.8; margin-bottom: 18px; font-weight: 300; }
+.about-lead strong { font-weight: 500; color: var(--ink); }
+/* Avatar placeholder */
+.avatar-wrap { padding-top: 8px; }
+.avatar-card {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, #E8F4F8 0%, #D4ECF0 50%, #C8E8E4 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(17,18,20,0.10);
+}
+.avatar-initials {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), var(--teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.avatar-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 3px; text-align: center; }
+.avatar-role { font-size: 12px; color: var(--ink-3); text-align: center; font-weight: 300; line-height: 1.5; }
+/* STATS ROW */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 32px 0 0;
+}
+.stat-card {
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.stat-num { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--orange); line-height: 1; margin-bottom: 5px; }
+.stat-label { font-size: 12px; color: var(--ink-3); font-weight: 300; line-height: 1.4; }
+/* DIVIDER */
+.divider { border: none; border-top: 1px solid var(--border); max-width: calc(var(--max) - 72px); margin: 0 auto; }
+/* SECTION */
+.section { max-width: var(--max); margin: 0 auto; padding: 0 36px; }
+.section-head { padding-top: 56px; margin-bottom: 10px; display: flex; align-items: baseline; gap: 14px; }
+.section-title { font-family: var(--serif); font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+.section-kicker { font-size: 13px; color: var(--ink-4); font-weight: 300; }
+.section-intro { font-size: 15px; color: var(--ink-3); line-height: 1.7; max-width: 580px; margin-bottom: 32px; font-weight: 300; }
+/* WILDERA */
+.wildera-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 28px;
+  margin-bottom: 52px;
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.18s;
+}
+.wildera-strip:hover { border-color: var(--orange-mid); box-shadow: 0 4px 16px rgba(232,96,10,0.08); transform: translateY(-1px); }
+.wildera-strip-left { display: flex; align-items: center; gap: 16px; }
+.wildera-strip-logo {
+  width: 40px; height: 40px;
+  border-radius: var(--radius);
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--orange);
+}
+.wildera-strip-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.wildera-strip-desc { font-size: 13px; color: var(--ink-3); font-weight: 300; }
+/* SPEAKING */
+.speaking-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 52px; }
+.speaking-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.speaking-card:hover { border-color: var(--border-md); box-shadow: 0 6px 20px rgba(17,18,20,0.07); transform: translateY(-2px); }
+.speaking-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.si-orange { background: var(--orange-light); }
+.si-teal   { background: var(--teal-light); }
+.si-blue   { background: var(--blue-light); }
+.speaking-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 7px; }
+.speaking-desc { font-size: 13px; color: var(--ink-3); line-height: 1.6; font-weight: 300; }
+.speaking-topics { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 5px; }
+.topic-tag { font-size: 11px; padding: 3px 9px; border-radius: 20px; background: var(--surface-3); color: var(--ink-3); border: 1px solid var(--border); }
+/* CTA */
+.about-cta {
+  background: var(--orange-light);
+  border: 1px solid var(--orange-mid);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.about-cta-text { }
+.about-cta-title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.about-cta-sub { font-size: 13.5px; color: var(--ink-3); font-weight: 300; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: var(--radius); font-size: 14px; font-weight: 500; font-family: var(--sans); text-decoration: none; cursor: pointer; border: none; transition: all 0.18s; }
+.btn-primary { background: var(--orange); color: #fff; }
+.btn-primary:hover { background: #d05508; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,96,10,0.3); }
+.btn-secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--border-md); }
+.btn-secondary:hover { background: var(--surface-2); transform: translateY(-1px); }
+/* FOOTER */
+footer { border-top: 1px solid var(--border); background: var(--surface-2); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 44px 36px 36px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+.footer-logo { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 10px; display: flex; align-items: center; gap: 7px; }
+.footer-logo-dot { width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--teal)); }
+.footer-tagline { font-size: 13px; color: var(--ink-3); line-height: 1.65; max-width: 280px; font-weight: 300; }
+.footer-col-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ink-4); margin-bottom: 14px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 9px; }
+.footer-links a { font-size: 14px; color: var(--ink-2); text-decoration: none; font-weight: 300; transition: color 0.15s; }
+.footer-links a:hover { color: var(--orange); }
+.footer-bottom { max-width: var(--max); margin: 0 auto; padding: 16px 36px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer-copy { font-size: 12px; color: var(--ink-4); font-weight: 300; }
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.about-hero { animation: fadeUp 0.5s ease both; }
+/* RESPONSIVE */
+@media (max-width: 760px) {
+  .about-hero { grid-template-columns: 1fr; padding: 44px 20px 36px; }
+  .avatar-wrap { display: none; }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .section { padding: 0 20px; }
+  .divider { max-width: calc(100% - 40px); }
+  .speaking-grid { grid-template-columns: 1fr; }
+  .wildera-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; padding: 32px 20px; }
+  .footer-bottom { padding: 14px 20px; }
+  .nav-inner { padding: 0 20px; }
+  .about-cta { flex-direction: column; align-items: flex-start; }
+}
+</style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="artifacts.html" class="logo"><span class="logo-dot"></span>AI4People</a>
-      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-      <ul class="nav-links">
-        <li><a href="artifacts.html" class="nav-pill">The Book</a></li>
+<nav>
+  <div class="nav-inner">
+    <a href="artifacts.html" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      AI4People
+    </a>
+    <ul class="nav-links">
+      <li><a href="artifacts.html">The Book</a></li>
+      <li><a href="author.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- HERO -->
+<div class="about-hero">
+  <div>
+    <div class="hero-eyebrow">
+      <span class="chip chip-orange">Author</span>
+      <span class="chip chip-teal">Founder</span>
+      <span class="chip chip-blue">Strategist</span>
+    </div>
+    <h1>Asmaa <em>Ibrahim</em></h1>
+    <p class="about-title-sub">Product Strategist · AI Author · Founder, Wildera Labs</p>
+    <p class="about-lead">
+      Asmaa Ibrahim spent over a decade shipping <strong>AI-powered products</strong> at Google and Vodafone before leaving to found her AI-native startup, <strong>Wildera Labs</strong>. Her work sits at the intersection of human-centred design, responsible AI, and large-scale product delivery.
+    </p>
+    <p class="about-lead">
+      Her book, <strong>Making AI Work for People</strong>, distils that decade of experience into the PRESS Framework — a practical, reproducible approach for teams building AI products that are ethical, explainable, and built to last.
+    </p>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years in AI product development</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Global organisations — Google & Vodafone</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Book published by Wiley</div>
+      </div>
+    </div>
+  </div>
+  <div class="avatar-wrap">
+    <div class="avatar-card">
+      <div class="avatar-initials">AI</div>
+      <div class="avatar-name">Asmaa Ibrahim</div>
+      <div class="avatar-role">Product Strategist<br>& AI Author</div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+<!-- WILDERA -->
+<div id="wildera" class="section">
+  <div class="section-head">
+    <h2 class="section-title">Wildera Labs</h2>
+    <span class="section-kicker">AI-native startup</span>
+  </div>
+  <a href="#" class="wildera-strip">
+    <div class="wildera-strip-left">
+      <div class="wildera-strip-logo">W</div>
+      <div>
+        <div class="wildera-strip-name">Wildera Labs</div>
+        <div class="wildera-strip-desc">Asmaa's AI-native startup — putting the PRESS Framework into practice for organisations building responsible AI products.</div>
+      </div>
+    </div>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8600A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+</div>
+<hr class="divider">
+<!-- SPEAKING -->
+<div id="speaking" class="section">
+  <div class="section-head">
+    <h2 class="section-title">Speaking & Advisory</h2>
+    <span class="section-kicker">Bringing the conversation to your stage or organisation</span>
+  </div>
+  <p class="section-intro">Asmaa speaks at conferences, corporate events, and leadership off-sites on the intersection of AI, product strategy, and responsible technology.</p>
+  <div class="speaking-grid">
+    <div class="speaking-card">
+      <div class="speaking-icon si-orange">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8600A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="speaking-title">Keynote Speaking</div>
+      <div class="speaking-desc">Engaging keynotes on responsible AI, human-centred design, and the future of AI-powered products for technical and non-technical audiences alike.</div>
+      <div class="speaking-topics">
+        <span class="topic-tag">Conferences</span>
+        <span class="topic-tag">Corporate events</span>
+        <span class="topic-tag">Summits</span>
+      </div>
+    </div>
+    <div class="speaking-card">
+      <div class="speaking-icon si-teal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A9E8C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="speaking-title">Workshops & Training</div>
+      <div class="speaking-desc">Hands-on PRESS Framework workshops for product, engineering, and leadership teams. Practical tools your organisation can apply immediately.</div>
+      <div class="speaking-topics">
+        <span class="topic-tag">PRESS Framework</span>
+        <span class="topic-tag">AI strategy</span>
+        <span class="topic-tag">Team training</span>
+      </div>
+    </div>
+    <div class="speaking-card">
+      <div class="speaking-icon si-blue">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E6CB8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="speaking-title">Advisory Work</div>
+      <div class="speaking-desc">Strategic advisory engagements with startups and enterprises building AI products — from responsible AI governance to go-to-market strategy.</div>
+      <div class="speaking-topics">
+        <span class="topic-tag">Startups</span>
+        <span class="topic-tag">Enterprise</span>
+        <span class="topic-tag">Governance</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-cta">
+    <div class="about-cta-text">
+      <div class="about-cta-title">Interested in working together?</div>
+      <div class="about-cta-sub">Speaking enquiries, advisory roles, or PRESS Framework workshops — get in touch.</div>
+    </div>
+    <a href="contact.html" class="btn btn-primary">Get in touch</a>
+  </div>
+</div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo"><span class="footer-logo-dot"></span>AI4People</div>
+      <p class="footer-tagline">Making AI Work for People — a practical framework for designing and building impactful AI-powered applications. By Asmaa Ibrahim. Published by Wiley.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Pages</div>
+      <ul class="footer-links">
+        <li><a href="artifacts.html">The Book</a></li>
         <li><a href="author.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
-  </nav>
-
-  <!-- Page Header -->
-  <section class="hero" style="padding: 4rem 0;">
-    <div class="container" style="text-align: center;">
-      <h1>About the Author</h1>
-      <p style="max-width: 650px; margin: 1rem auto 0; opacity: 0.9; font-size: 1.15rem;">Meet Asmaa Ibrahim&#8212;the mind behind Making AI Work for People.</p>
+    <div>
+      <div class="footer-col-title">Get the book</div>
+      <ul class="footer-links">
+        <li><a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" target="_blank" rel="noopener">Amazon</a></li>
+        <li><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394406463" target="_blank" rel="noopener">Wiley Online</a></li>
+        <li><a href="https://www.linkedin.com/in/asmaa-ibrahim/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Author Bio -->
-  <section class="section">
-    <div class="container">
-      <div class="author-grid">
-        <div class="author-photo">
-          <img src="images/professional_linkedin.png" alt="Asmaa Ibrahim - Author of Making AI Work for People">
-        </div>
-        <div>
-          <h2>Asmaa Ibrahim</h2>
-          <p><strong>Asmaa Ibrahim</strong> is a product strategist with <strong>15+ years of experience</strong> in high tech and over a decade designing and shipping AI-powered applications at companies including <strong>Google</strong> and <strong>Vodafone</strong>. After years of shaping AI strategy at some of the world's largest tech companies, Asmaa left Google to found her AI-native startup, <strong>Wildera Labs</strong>.</p>
-          <p>At Google, Asmaa led the <strong>Gemini in Firebase</strong> product launch and initiated a new partnership between Flutter and Vertex AI. She is a recognized <strong>Google Developer Expert</strong>, leveraging her AI expertise and cross-functional leadership across engineering, UX, and business strategy.</p>
-          <p>Asmaa received an award for her published paper at the ICICT2018 conference in the UK, which was selected as one of the top 10 based on content, quality, and presentation. She is also a published author on IEEE Xplore.</p>
-
-          <h3 style="margin-top: 2rem;">Areas of Expertise</h3>
-          <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
-            <span class="artifact-tag">Artificial Intelligence</span>
-            <span class="artifact-tag">Product Strategy</span>
-            <span class="artifact-tag">Software Engineering</span>
-            <span class="artifact-tag">UX Collaboration</span>
-            <span class="artifact-tag">AI Governance</span>
-            <span class="artifact-tag">Digital Transformation</span>
-            <span class="artifact-tag">Machine Learning</span>
-            <span class="artifact-tag">Business Leadership</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Career Highlights -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <h2>Career Highlights</h2>
-      </div>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-icon">&#127760;</div>
-          <h3>Google</h3>
-          <p>Senior AI Practitioner leading the Gemini in Firebase product launch. Initiated the Flutter and Vertex AI partnership.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#127793;</div>
-          <h3>Wildera Labs</h3>
-          <p>Founder of her first AI-native startup, building innovative AI-powered solutions from the ground up.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#127891;</div>
-          <h3>Google Developer Expert</h3>
-          <p>Recognized as part of Google's global program for experts and thought leaders in Google technologies.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#128225;</div>
-          <h3>Vodafone</h3>
-          <p>Product strategist with over a decade of experience designing and shipping AI-powered applications.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#127942;</div>
-          <h3>ICICT2018 Award</h3>
-          <p>Published paper selected as one of the top 10 at the ICICT2018 conference in the UK for content, quality, and presentation.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#128218;</div>
-          <h3>IEEE Author</h3>
-          <p>Published researcher on IEEE Xplore, contributing to the academic body of knowledge in AI and technology.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Speaking & Media -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Speaking &amp; Media</h2>
-        <p>Available for keynotes, panels, workshops, and media interviews</p>
-      </div>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-icon">&#127908;</div>
-          <h3>Keynote Speaking</h3>
-          <p>Engaging talks on human-centered AI, the PRESS framework, responsible product development, and the future of AI-powered applications.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#128218;</div>
-          <h3>Workshops</h3>
-          <p>Hands-on sessions using the book's PRESS framework and evaluation flywheel to help teams build responsible AI products.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#127909;</div>
-          <h3>Media &amp; Podcasts</h3>
-          <p>Interviews and commentary on AI trends, ethics, product strategy, and making AI work for real people.</p>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 2rem;">
-        <a href="contact.html" class="btn btn-primary">Get in Touch</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo"><span class="logo-dot"></span><strong>AI4People</strong></div>
-          <p>Making AI Work for People &mdash; a practical framework for designing and building impactful AI-powered applications. By Asmaa Ibrahim. Published by Wiley.</p>
-        </div>
-        <div>
-          <h4>PAGES</h4>
-          <ul class="footer-links">
-            <li><a href="artifacts.html">The Book</a></li>
-            <li><a href="author.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>GET THE BOOK</h4>
-          <ul class="footer-links">
-            <li><a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" target="_blank" rel="noopener">Amazon</a></li>
-            <li><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394406463" target="_blank" rel="noopener">Wiley Online</a></li>
-            <li><a href="https://www.linkedin.com/in/asmaa-ibrahim/" target="_blank" rel="noopener">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Making AI Work for People by Asmaa Ibrahim. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Making AI Work for People by Asmaa Ibrahim. All rights reserved.</span>
+  </div>
+</footer>
 </body>
 </html>
