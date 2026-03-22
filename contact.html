@@ -248,30 +248,30 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
   <!-- RIGHT — FORM -->
   <div>
     <div class="form-card" id="formCard">
-      <div id="formBody">
+      <form id="formBody" action="https://formspree.io/f/asmaa.ibrahim12@gmail.com" method="POST" onsubmit="return handleSubmit(event)">
         <div class="form-title">Send a message</div>
         <div class="form-sub">Asmaa reads every message personally and typically replies within 2–3 business days.</div>
         <div class="form-row">
           <div class="form-group">
             <label for="fname">First name</label>
-            <input type="text" id="fname" placeholder="Jane">
+            <input type="text" id="fname" name="firstName" placeholder="Jane" required>
           </div>
           <div class="form-group">
             <label for="lname">Last name</label>
-            <input type="text" id="lname" placeholder="Smith">
+            <input type="text" id="lname" name="lastName" placeholder="Smith">
           </div>
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" id="email" placeholder="jane@company.com">
+          <input type="email" id="email" name="_replyto" placeholder="jane@company.com" required>
         </div>
         <div class="form-group">
           <label for="org">Organisation</label>
-          <input type="text" id="org" placeholder="Optional">
+          <input type="text" id="org" name="organisation" placeholder="Optional">
         </div>
         <div class="form-group">
           <label for="reason">Reason for contact</label>
-          <select id="reason">
+          <select id="reason" name="reason" required>
             <option value="" disabled selected>Select a topic</option>
             <option>Speaking or keynote</option>
             <option>PRESS Framework workshop</option>
@@ -283,11 +283,12 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
         <hr class="form-divider">
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" placeholder="Tell Asmaa a bit about what you're working on and how she can help..."></textarea>
+          <textarea id="message" name="message" placeholder="Tell Asmaa a bit about what you're working on and how she can help..." required></textarea>
         </div>
-        <button class="btn-submit" onclick="handleSubmit()">Send message</button>
+        <input type="hidden" name="_subject" value="New contact from AI4People website">
+        <button type="submit" class="btn-submit">Send message</button>
         <div class="form-note">No spam, ever. Your details are used only to respond to your enquiry.</div>
-      </div>
+      </form>
       <div class="form-success" id="formSuccess">
         <div class="success-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A9E8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -327,7 +328,9 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
   </div>
 </footer>
 <script>
-function handleSubmit() {
+function handleSubmit(event) {
+  event.preventDefault();
+  const form = document.getElementById('formBody');
   const email = document.getElementById('email').value.trim();
   const fname = document.getElementById('fname').value.trim();
   const message = document.getElementById('message').value.trim();
@@ -345,11 +348,30 @@ function handleSubmit() {
         el.addEventListener('input', () => el.style.borderColor = '', { once: true });
       }
     });
-    return;
+    return false;
   }
-  document.getElementById('formBody').style.display = 'none';
-  const success = document.getElementById('formSuccess');
-  success.style.display = 'flex';
+  const btn = form.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(function(response) {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'flex';
+    } else {
+      alert('Something went wrong. Please try again.');
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    }
+  }).catch(function() {
+    alert('Network error. Please check your connection and try again.');
+    btn.disabled = false;
+    btn.textContent = 'Send message';
+  });
+  return false;
 }
 </script>
 </body>
