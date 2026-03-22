@@ -248,7 +248,9 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
   <!-- RIGHT — FORM -->
   <div>
     <div class="form-card" id="formCard">
-      <form id="formBody" action="https://formspree.io/f/mdawrndn" method="POST" onsubmit="return handleSubmit(event)">
+      <form id="formBody" action="https://api.web3forms.com/submit" method="POST" onsubmit="return handleSubmit(event)">
+        <input type="hidden" name="access_key" value="beea8436-a90e-4494-b8af-d39266ff516e">
+        <input type="hidden" name="subject" value="New contact from AI4People website">
         <div class="form-title">Send a message</div>
         <div class="form-sub">Asmaa reads every message personally and typically replies within 2–3 business days.</div>
         <div class="form-row">
@@ -263,7 +265,7 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" id="email" name="_replyto" placeholder="jane@company.com" required>
+          <input type="email" id="email" name="email" placeholder="jane@company.com" required>
         </div>
         <div class="form-group">
           <label for="org">Organisation</label>
@@ -285,7 +287,7 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Tell Asmaa a bit about what you're working on and how she can help..." required></textarea>
         </div>
-        <input type="hidden" name="_subject" value="New contact from AI4People website">
+
         <button type="submit" class="btn-submit">Send message</button>
         <div class="form-note">No spam, ever. Your details are used only to respond to your enquiry.</div>
       </form>
