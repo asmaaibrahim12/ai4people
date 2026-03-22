@@ -1,200 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Artifacts from Making AI Work for People - the PRESS framework, evaluation flywheel, human-AI collaboration strategies, and case study resources.">
-  <title>Artifacts - Making AI Work for People | Asmaa Ibrahim</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Book & Artifacts – Making AI Work for People | Asmaa Ibrahim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --orange:       #E8600A;
+  --orange-light: #FDF0E8;
+  --orange-mid:   #F5C4A0;
+  --pink:         #D63670;
+  --pink-light:   #FCE8F1;
+  --blue:         #2E6CB8;
+  --blue-light:   #E7F0FB;
+  --blue-mid:     #A8C4E8;
+  --teal:         #1A9E8C;
+  --teal-light:   #E4F5F2;
+  --teal-mid:     #7DCDC3;
+  --ink:          #111214;
+  --ink-2:        #3D4045;
+  --ink-3:        #7A7E85;
+  --ink-4:        #B0B4BA;
+  --surface:      #FFFFFF;
+  --surface-2:    #F7F8FA;
+  --surface-3:    #EFF1F4;
+  --border:       rgba(17,18,20,0.10);
+  --border-md:    rgba(17,18,20,0.18);
+  --serif:  'Lora', Georgia, serif;
+  --sans:   'Sora', system-ui, sans-serif;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --max: 1000px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--surface); color: var(--ink); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 36px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+.nav-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--teal)); }
+.nav-links { display: flex; gap: 6px; list-style: none; }
+.nav-links a { font-size: 13.5px; font-weight: 400; color: var(--ink-3); text-decoration: none; padding: 6px 14px; border-radius: 20px; transition: color 0.15s, background 0.15s; }
+.nav-links a:hover { color: var(--ink); background: var(--surface-2); }
+.nav-links a.active { color: var(--ink); background: var(--surface-3); font-weight: 500; }
+/* JUMP NAV */
+.jump-nav { border-bottom: 1px solid var(--border); background: var(--surface-2); position: sticky; top: 62px; z-index: 90; }
+.jump-inner { max-width: var(--max); margin: 0 auto; padding: 0 36px; display: flex; height: 44px; align-items: center; gap: 0; overflow-x: auto; }
+.jump-link { font-size: 13px; color: var(--ink-3); text-decoration: none; padding: 0 16px; height: 100%; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+.jump-link:hover { color: var(--ink); }
+.jump-link.active { color: var(--orange); border-bottom-color: var(--orange); font-weight: 500; }
+/* HERO */
+.hero { max-width: var(--max); margin: 0 auto; padding: 72px 36px 64px; display: grid; grid-template-columns: 1fr 200px; gap: 56px; align-items: center; }
+.hero-tag-row { display: flex; gap: 8px; margin-bottom: 22px; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.04em; padding: 4px 12px; border-radius: 20px; border: 1px solid; }
+.chip-orange { background: var(--orange-light); color: var(--orange); border-color: var(--orange-mid); }
+.chip-teal   { background: var(--teal-light);   color: var(--teal);   border-color: var(--teal-mid); }
+.chip-blue   { background: var(--blue-light);   color: var(--blue);   border-color: var(--blue-mid); }
+.hero h1 { font-family: var(--serif); font-size: clamp(32px, 4.2vw, 48px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px; }
+.hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--orange) 0%, var(--pink) 50%, var(--teal) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--ink-3); margin-bottom: 22px; line-height: 1.5; }
+.hero-desc { font-size: 15px; color: var(--ink-2); line-height: 1.75; max-width: 500px; margin-bottom: 28px; font-weight: 300; }
+.hero-desc strong { font-weight: 500; color: var(--ink); }
+.meta-strip { display: flex; gap: 0; margin-bottom: 30px; border: 1px solid var(--border-md); border-radius: var(--radius); overflow: hidden; width: fit-content; }
+.meta-cell { padding: 10px 20px; border-right: 1px solid var(--border); }
+.meta-cell:last-child { border-right: none; }
+.meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ink-4); display: block; margin-bottom: 2px; }
+.meta-value { font-size: 13px; font-weight: 500; color: var(--ink); }
+.cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: var(--radius); font-size: 14px; font-weight: 500; font-family: var(--sans); text-decoration: none; cursor: pointer; border: none; transition: all 0.18s; letter-spacing: -0.01em; }
+.btn-primary { background: var(--orange); color: #fff; }
+.btn-primary:hover { background: #d05508; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,96,10,0.3); }
+.btn-secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--border-md); }
+.btn-secondary:hover { background: var(--surface-2); transform: translateY(-1px); }
+/* BOOK COVER */
+.book-wrap { padding-top: 4px; }
+.book-3d { width: 100%; aspect-ratio: 2/3; border-radius: 6px 12px 12px 6px; overflow: hidden; box-shadow: -4px 0 0 0 #c8c0b8, -8px 0 0 0 #d8d0c8, 0 12px 48px rgba(17,18,20,0.22), 0 4px 12px rgba(17,18,20,0.10); position: relative; }
+.book-3d img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.book-shadow { width: 80%; height: 12px; background: radial-gradient(ellipse, rgba(17,18,20,0.18) 0%, transparent 70%); margin: 6px auto 0; }
+/* DIVIDER */
+.divider { border: none; border-top: 1px solid var(--border); max-width: calc(var(--max) - 72px); margin: 0 auto; }
+/* SECTION */
+.section { max-width: var(--max); margin: 0 auto; padding: 0 36px; }
+.section-head { padding-top: 56px; margin-bottom: 10px; display: flex; align-items: baseline; gap: 14px; }
+.section-title { font-family: var(--serif); font-size: 28px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+.section-kicker { font-size: 13px; color: var(--ink-4); font-weight: 300; }
+.section-intro { font-size: 15px; color: var(--ink-3); line-height: 1.7; max-width: 580px; margin-bottom: 32px; font-weight: 300; }
+/* PRESS */
+.press-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 56px; }
+.press-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 14px 20px; text-align: center; background: var(--surface); transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; cursor: default; position: relative; overflow: hidden; }
+.press-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 99px 99px 0 0; }
+.press-card.c1::before { background: var(--orange); }
+.press-card.c2::before { background: var(--pink); }
+.press-card.c3::before { background: #6E56C8; }
+.press-card.c4::before { background: var(--blue); }
+.press-card.c5::before { background: var(--teal); }
+.press-card:hover { border-color: var(--border-md); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(17,18,20,0.08); }
+.press-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-family: var(--serif); font-size: 22px; font-weight: 600; }
+.press-card.c1 .press-icon { background: var(--orange-light); color: var(--orange); }
+.press-card.c2 .press-icon { background: var(--pink-light);   color: var(--pink); }
+.press-card.c3 .press-icon { background: #EEEBFC; color: #5A46B8; }
+.press-card.c4 .press-icon { background: var(--blue-light);  color: var(--blue); }
+.press-card.c5 .press-icon { background: var(--teal-light);  color: var(--teal); }
+.press-name { font-size: 12.5px; font-weight: 500; color: var(--ink); margin-bottom: 5px; line-height: 1.3; }
+.press-desc { font-size: 11.5px; color: var(--ink-3); line-height: 1.55; font-weight: 300; }
+/* ARTIFACTS */
+.artifacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 36px; }
+.artifact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 22px; display: flex; gap: 14px; align-items: flex-start; transition: border-color 0.2s, box-shadow 0.2s; }
+.artifact-card:hover { border-color: var(--border-md); box-shadow: 0 4px 16px rgba(17,18,20,0.07); }
+.artifact-num { width: 28px; height: 28px; border-radius: 50%; background: var(--surface-3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--ink-3); flex-shrink: 0; margin-top: 1px; }
+.artifact-body { flex: 1; min-width: 0; }
+.artifact-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 5px; line-height: 1.3; }
+.artifact-desc { font-size: 12.5px; color: var(--ink-3); line-height: 1.6; margin-bottom: 10px; font-weight: 300; }
+.artifact-when { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--teal); background: var(--teal-light); padding: 4px 10px; border-radius: 6px; font-weight: 400; }
+.artifact-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--surface-3); color: var(--ink-4); border: 1px solid var(--border); flex-shrink: 0; white-space: nowrap; height: fit-content; margin-top: 1px; }
+/* NOTIFY BAR */
+.notify-bar { border-radius: var(--radius-lg); padding: 30px 36px; margin-bottom: 56px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; position: relative; overflow: hidden; background: var(--ink); }
+.notify-bar::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 10% 50%, rgba(232,96,10,0.25) 0%, transparent 50%), radial-gradient(circle at 90% 50%, rgba(26,158,140,0.2) 0%, transparent 50%); pointer-events: none; }
+.notify-text { flex: 1; min-width: 200px; position: relative; }
+.notify-title { font-family: var(--serif); font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 4px; line-height: 1.2; }
+.notify-sub { font-size: 13.5px; color: rgba(255,255,255,0.5); font-weight: 300; }
+.notify-form { display: flex; gap: 8px; flex-wrap: wrap; position: relative; }
+.notify-input { padding: 10px 16px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; font-family: var(--sans); outline: none; width: 240px; transition: border-color 0.2s, background 0.2s; }
+.notify-input::placeholder { color: rgba(255,255,255,0.3); }
+.notify-input:focus { border-color: rgba(232,96,10,0.6); background: rgba(255,255,255,0.12); }
+.btn-notify { padding: 10px 20px; background: var(--orange); color: #fff; border: none; border-radius: var(--radius); font-size: 14px; font-weight: 500; font-family: var(--sans); cursor: pointer; transition: background 0.18s, transform 0.15s; white-space: nowrap; }
+.btn-notify:hover { background: #d05508; transform: translateY(-1px); }
+/* FOOTER */
+footer { border-top: 1px solid var(--border); background: var(--surface-2); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 44px 36px 36px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+.footer-logo { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 10px; display: flex; align-items: center; gap: 7px; }
+.footer-logo-dot { width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--teal)); }
+.footer-tagline { font-size: 13px; color: var(--ink-3); line-height: 1.65; max-width: 280px; font-weight: 300; }
+.footer-col-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ink-4); margin-bottom: 14px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 9px; }
+.footer-links a { font-size: 14px; color: var(--ink-2); text-decoration: none; font-weight: 300; transition: color 0.15s; }
+.footer-links a:hover { color: var(--orange); }
+.footer-bottom { max-width: var(--max); margin: 0 auto; padding: 16px 36px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer-copy { font-size: 12px; color: var(--ink-4); font-weight: 300; }
+.footer-badges { display: flex; gap: 8px; }
+.footer-badge { font-size: 11px; padding: 3px 9px; border-radius: 20px; border: 1px solid var(--border-md); color: var(--ink-4); background: var(--surface); }
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.hero-text  { animation: fadeUp 0.5s ease both; }
+.book-wrap  { animation: fadeUp 0.5s ease 0.1s both; }
+.press-card { animation: fadeUp 0.4s ease both; }
+.press-card:nth-child(1) { animation-delay: 0.05s; }
+.press-card:nth-child(2) { animation-delay: 0.10s; }
+.press-card:nth-child(3) { animation-delay: 0.15s; }
+.press-card:nth-child(4) { animation-delay: 0.20s; }
+.press-card:nth-child(5) { animation-delay: 0.25s; }
+/* RESPONSIVE */
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding: 44px 20px 36px; gap: 32px; }
+  .book-wrap { order: -1; max-width: 160px; }
+  .section { padding: 0 20px; }
+  .divider { max-width: calc(100% - 40px); }
+  .press-grid { grid-template-columns: repeat(3, 1fr); }
+  .artifacts-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; padding: 32px 20px; gap: 28px; }
+  .footer-bottom { padding: 14px 20px; }
+  .nav-inner { padding: 0 20px; }
+  .jump-inner { padding: 0 20px; }
+  .notify-bar { padding: 24px 20px; }
+  .meta-strip { flex-wrap: wrap; }
+}
+</style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">AI4<span>People</span></a>
-      <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="book.html">The Book</a></li>
-        <li><a href="artifacts.html">Artifacts</a></li>
-        <li><a href="author.html">Author</a></li>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="artifacts.html" class="nav-logo">
+      <span class="nav-logo-dot"></span>
+      AI4People
+    </a>
+    <ul class="nav-links">
+      <li><a href="artifacts.html" class="active">The Book</a></li>
+      <li><a href="author.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- JUMP NAV -->
+<div class="jump-nav">
+  <div class="jump-inner">
+    <a href="#overview" class="jump-link active">Overview</a>
+    <a href="#press"    class="jump-link">PRESS Framework</a>
+    <a href="#artifacts" class="jump-link">Artifacts</a>
+    <a href="#notify"   class="jump-link">Stay Updated</a>
+  </div>
+</div>
+<!-- HERO -->
+<div id="overview" class="hero">
+  <div class="hero-text">
+    <div class="hero-tag-row">
+      <span class="chip chip-orange">New release</span>
+      <span class="chip chip-blue">Published by Wiley</span>
+      <span class="chip chip-teal">ISBN 978-1394392094</span>
+    </div>
+    <h1>Making <em>AI</em> Work<br>for People</h1>
+    <p class="hero-sub">A Framework for Designing and Building Impactful AI-Powered Applications</p>
+    <p class="hero-desc">
+      Empowers <strong>software engineers</strong>, <strong>product managers</strong>, and <strong>app designers</strong> to create AI-enabled applications that inspire trust, solve hard problems, and prioritise human needs.<br><br>
+      Written by <strong>Asmaa Ibrahim</strong> — product strategist with over a decade shipping AI-powered products at Google and Vodafone, and founder of Wildera Labs.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-cell">
+        <span class="meta-label">Publisher</span>
+        <span class="meta-value">Wiley</span>
+      </div>
+      <div class="meta-cell">
+        <span class="meta-label">Author</span>
+        <span class="meta-value">Asmaa Ibrahim</span>
+      </div>
+      <div class="meta-cell">
+        <span class="meta-label">Format</span>
+        <span class="meta-value">Print & Digital</span>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" class="btn btn-primary" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Buy on Amazon
+      </a>
+      <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394406463" class="btn btn-secondary" target="_blank" rel="noopener">
+        Wiley Online
+      </a>
+    </div>
+  </div>
+  <div class="book-wrap">
+    <div class="book-3d">
+      <img src="images/71weE8AUKQL._SL1500_.jpg" alt="Making AI Work for People — book cover by Asmaa Ibrahim">
+    </div>
+    <div class="book-shadow"></div>
+  </div>
+</div>
+<hr class="divider">
+<!-- PRESS -->
+<div id="press" class="section">
+  <div class="section-head">
+    <h2 class="section-title">The PRESS Framework</h2>
+    <span class="section-kicker">5 principles at the heart of the book</span>
+  </div>
+  <p class="section-intro">A systematic approach ensuring every AI product you build embodies five essential principles — from first design decision through to long-term maintenance.</p>
+  <div class="press-grid">
+    <div class="press-card c1">
+      <div class="press-icon">P</div>
+      <div class="press-name">People-First Design</div>
+      <div class="press-desc">Build AI that amplifies human strengths rather than replacing them</div>
+    </div>
+    <div class="press-card c2">
+      <div class="press-icon">R</div>
+      <div class="press-name">Responsible at the Core</div>
+      <div class="press-desc">Embed ethics into every stage, from data collection to deployment</div>
+    </div>
+    <div class="press-card c3">
+      <div class="press-icon">E</div>
+      <div class="press-name">Explainability</div>
+      <div class="press-desc">Ensure AI decisions can be understood, trusted, and audited</div>
+    </div>
+    <div class="press-card c4">
+      <div class="press-icon">S</div>
+      <div class="press-name">Safety via Benchmarking</div>
+      <div class="press-desc">Rigorous evaluation before any system reaches real users</div>
+    </div>
+    <div class="press-card c5">
+      <div class="press-icon">S</div>
+      <div class="press-name">Sustainability</div>
+      <div class="press-desc">Design for lasting value — costs, infrastructure, and longevity</div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+<!-- ARTIFACTS -->
+<div id="artifacts" class="section">
+  <div class="section-head">
+    <h2 class="section-title">Book Artifacts</h2>
+    <span class="section-kicker">8 practical templates & tools</span>
+  </div>
+  <p class="section-intro">Frameworks, checklists, and matrices from the book — each mapped to a specific PRESS phase and chapter so you know exactly when to reach for them.</p>
+  <div class="artifacts-grid">
+    <div class="artifact-card">
+      <div class="artifact-num">1</div>
+      <div class="artifact-body">
+        <div class="artifact-title">PRESS Readiness Assessment</div>
+        <div class="artifact-desc">Evaluate your organisation's readiness before selecting AI opportunities or committing budget. Scores predict cost structures, timelines, and probability of success.</div>
+        <span class="artifact-when">Before selecting AI opportunities or allocating budget</span>
+      </div>
+      <span class="artifact-badge">Coming soon</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-num">2</div>
+      <div class="artifact-body">
+        <div class="artifact-title">Collaboration Mode Selection Matrix</div>
+        <div class="artifact-desc">Identify where your organisation sits on the human-AI collaboration spectrum and choose the right implementation approach.</div>
+        <span class="artifact-when">After PRESS Readiness Assessment (Appendix A)</span>
+      </div>
+      <span class="artifact-badge">Coming soon</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-num">3</div>
+      <div class="artifact-body">
+        <div class="artifact-title">Three-Layer Metrics</div>
+        <div class="artifact-desc">Build a complete measurement system across business, model, and operational layers — each serving a distinct audience and purpose.</div>
+        <span class="artifact-when">After defining your north star metric</span>
+      </div>
+      <span class="artifact-badge">Coming soon</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-num">4</div>
+      <div class="artifact-body">
+        <div class="artifact-title">10-Week Validation Timeline</div>
+        <div class="artifact-desc">Transform your strategic choices into a testable design sequence with clear milestones and decision gates.</div>
+        <span class="artifact-when">After Collaboration Mode Selection Matrix (Template 2)</span>
+      </div>
+      <span class="artifact-badge">Coming soon</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-num">5</div>
+      <div class="artifact-body">
+        <div class="artifact-title">Continuous Evaluation Checklist</div>
+        <div class="artifact-desc">Maintain and improve AI system performance once in production. Metrics tell you what's happening — this checklist tells you what to do about it.</div>
+        <span class="artifact-when">After your AI system is in production</span>
+      </div>
+      <span class="artifact-badge">Coming soon</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-num">6</div>
+      <div class="artifact-body">
+        <div class="artifact-title">Technology Selection Matrix</div>
+        <div class="artifact-desc">Select the technology stack that best matches your proven requirements after completing the validation phase.</div>
+        <span class="artifact-when">After 10-week validation (Appendix E)</span>
+      </div>
+      <span class="artifact-badge">Coming soon</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-num">7</div>
+      <div class="artifact-body">
+        <div class="artifact-title">Serving Optimisation Checklist</div>
+        <div class="artifact-desc">Transition smoothly from pilot to production. Identify bottlenecks, choose the right optimisation strategy, and build sustainable operations.</div>
+        <span class="artifact-when">When transitioning from pilot to production</span>
+      </div>
+      <span class="artifact-badge">Coming soon</span>
+    </div>
+    <div class="artifact-card">
+      <div class="artifact-num">8</div>
+      <div class="artifact-body">
+        <div class="artifact-title">AI Literacy Self-Assessment</div>
+        <div class="artifact-desc">Identify literacy gaps before launching AI initiatives, or measure progress after implementation. Strong PRESS scores require the literacy to back them up.</div>
+        <span class="artifact-when">Before launching AI initiatives, or after implementation</span>
+      </div>
+      <span class="artifact-badge">Coming soon</span>
+    </div>
+  </div>
+  <!-- Notify -->
+  <div class="notify-bar" id="notify">
+    <div class="notify-text">
+      <div class="notify-title">Get notified when artifacts drop</div>
+      <div class="notify-sub">All 8 templates are in progress — we'll send them as they're ready.</div>
+    </div>
+    <div class="notify-form">
+      <input class="notify-input" type="email" placeholder="your@email.com" id="emailInput">
+      <button class="btn-notify" onclick="handleNotify()">Notify me</button>
+    </div>
+  </div>
+</div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo"><span class="footer-logo-dot"></span>AI4People</div>
+      <p class="footer-tagline">Making AI Work for People — a practical framework for designing and building impactful AI-powered applications. By Asmaa Ibrahim. Published by Wiley.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Pages</div>
+      <ul class="footer-links">
+        <li><a href="artifacts.html">The Book</a></li>
+        <li><a href="author.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
-  </nav>
-
-  <!-- Page Header -->
-  <section class="hero" style="padding: 4rem 0;">
-    <div class="container" style="text-align: center;">
-      <h1>Book Artifacts</h1>
-      <p style="max-width: 700px; margin: 1rem auto 0; opacity: 0.9; font-size: 1.15rem;">Frameworks, strategies, and tools from Making AI Work for People&#8212;designed for practical application in your AI projects.</p>
+    <div>
+      <div class="footer-col-title">Get the book</div>
+      <ul class="footer-links">
+        <li><a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" target="_blank" rel="noopener">Amazon</a></li>
+        <li><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781394406463" target="_blank" rel="noopener">Wiley Online</a></li>
+        <li><a href="https://www.linkedin.com/in/asmaa-ibrahim/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Core Framework -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>The PRESS Framework</h2>
-        <p>The central artifact of the book&#8212;a systematic approach to building AI products that serve people</p>
-      </div>
-      <div class="artifact-list">
-        <div class="artifact-item">
-          <h3>P &#8212; People-First Design</h3>
-          <div class="artifact-meta">Core Principle</div>
-          <p>Strategies and techniques for designing AI applications that start with human needs, amplify human strengths, and keep users at the center of every product decision.</p>
-          <span class="artifact-tag">Design</span>
-          <span class="artifact-tag">Human-Centered</span>
-          <span class="artifact-tag">UX</span>
-        </div>
-        <div class="artifact-item">
-          <h3>R &#8212; Responsible in the Core</h3>
-          <div class="artifact-meta">Core Principle</div>
-          <p>Frameworks for embedding ethical and responsible AI practices into the foundation of your development lifecycle, from data collection through deployment.</p>
-          <span class="artifact-tag">Ethics</span>
-          <span class="artifact-tag">Responsible AI</span>
-        </div>
-        <div class="artifact-item">
-          <h3>E &#8212; Explainability &amp; Interpretability</h3>
-          <div class="artifact-meta">Core Principle</div>
-          <p>Methods for making AI systems transparent so that decisions can be understood, trusted, and audited by the people they affect.</p>
-          <span class="artifact-tag">Transparency</span>
-          <span class="artifact-tag">Trust</span>
-        </div>
-        <div class="artifact-item">
-          <h3>S &#8212; Safety via Benchmarking</h3>
-          <div class="artifact-meta">Core Principle</div>
-          <p>Rigorous evaluation methods and benchmarking approaches to guarantee AI applications meet safety standards before reaching users.</p>
-          <span class="artifact-tag">Safety</span>
-          <span class="artifact-tag">Evaluation</span>
-        </div>
-        <div class="artifact-item">
-          <h3>S &#8212; Sustainability &amp; Long-Term Impact</h3>
-          <div class="artifact-meta">Core Principle</div>
-          <p>Guidance for designing AI systems that deliver lasting value while managing costs, infrastructure, and long-term maintenance requirements.</p>
-          <span class="artifact-tag">Sustainability</span>
-          <span class="artifact-tag">Scaling</span>
-        </div>
-      </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Making AI Work for People by Asmaa Ibrahim. All rights reserved.</span>
+    <div class="footer-badges">
+      <span class="footer-badge">Wiley</span>
+      <span class="footer-badge">ISBN 978-1394392094</span>
     </div>
-  </section>
-
-  <!-- Practical Tools -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <h2>Practical Tools &amp; Strategies</h2>
-        <p>Actionable artifacts you can apply directly in your AI projects</p>
-      </div>
-      <div class="artifact-list">
-        <div class="artifact-item">
-          <h3>Evaluation Flywheel</h3>
-          <div class="artifact-meta">Tool</div>
-          <p>A proven evaluation flywheel methodology to guarantee that AI applications meet real user needs and continuously improve through structured feedback loops.</p>
-          <span class="artifact-tag">Evaluation</span>
-          <span class="artifact-tag">Continuous Improvement</span>
-        </div>
-        <div class="artifact-item">
-          <h3>Human-AI Collaboration Strategies</h3>
-          <div class="artifact-meta">Strategy Guide</div>
-          <p>Practical strategies for designing collaboration between humans and AI systems that amplify rather than replace human strengths and capabilities.</p>
-          <span class="artifact-tag">Collaboration</span>
-          <span class="artifact-tag">Human-AI</span>
-        </div>
-        <div class="artifact-item">
-          <h3>AI Opportunity Identification</h3>
-          <div class="artifact-meta">Strategy Guide</div>
-          <p>Methods for identifying where AI integration creates genuine value, and techniques for designing human-centered solutions from the ground up.</p>
-          <span class="artifact-tag">Strategy</span>
-          <span class="artifact-tag">Product</span>
-        </div>
-        <div class="artifact-item">
-          <h3>Human-Centered KPI Framework</h3>
-          <div class="artifact-meta">Measurement Tool</div>
-          <p>A framework for defining and measuring success with business-focused KPIs that reflect genuine user satisfaction and business value.</p>
-          <span class="artifact-tag">KPIs</span>
-          <span class="artifact-tag">Measurement</span>
-        </div>
-        <div class="artifact-item">
-          <h3>MVP-to-Production Scaling Guide</h3>
-          <div class="artifact-meta">Implementation Guide</div>
-          <p>Essential guidance for scaling AI applications from MVP to production-grade systems, including cost management and infrastructure planning.</p>
-          <span class="artifact-tag">Scaling</span>
-          <span class="artifact-tag">Infrastructure</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Studies -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Real-World Case Studies</h2>
-        <p>Detailed case studies demonstrating the PRESS framework in action</p>
-      </div>
-      <div class="card-grid" style="max-width: 760px; margin: 0 auto;">
-        <div class="card">
-          <div class="card-icon">&#128225;</div>
-          <h3>Telecom Industry</h3>
-          <p>A detailed case study showing how human-first AI implementations transformed operations and customer experience in the telecommunications sector.</p>
-          <span class="artifact-tag">Telecom</span>
-          <span class="artifact-tag">Case Study</span>
-        </div>
-        <div class="card">
-          <div class="card-icon">&#128722;</div>
-          <h3>Retail Industry</h3>
-          <p>A real-world example of deploying responsible AI in retail, demonstrating measurable outcomes and lessons learned from a people-first approach.</p>
-          <span class="artifact-tag">Retail</span>
-          <span class="artifact-tag">Case Study</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section" style="background: var(--primary); color: #fff; text-align: center;">
-    <div class="container">
-      <h2 style="color: #fff;">Get the Full Context</h2>
-      <p style="max-width: 600px; margin: 1rem auto 2rem; opacity: 0.9;">These artifacts are introduced and explained in detail throughout the book. Get the full implementation guidance, case studies, and step-by-step instructions.</p>
-      <a href="https://www.amazon.com/Making-Work-People-AI-Powered-Applications/dp/1394392095" class="btn btn-primary" target="_blank" rel="noopener">Buy on Amazon</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>AI4People</h4>
-          <p>Making AI Work for People&#8212;a framework for designing and building impactful AI-powered applications by Asmaa Ibrahim. Published by Wiley.</p>
-        </div>
-        <div>
-          <h4>Pages</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="book.html">The Book</a></li>
-            <li><a href="artifacts.html">Artifacts</a></li>
-            <li><a href="author.html">Author</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Connect</h4>
-          <ul class="footer-links">
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="https://www.linkedin.com/in/asmaa-ibrahim/" target="_blank" rel="noopener">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Making AI Work for People by Asmaa Ibrahim. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+  </div>
+</footer>
+<script>
+  const jumpLinks = document.querySelectorAll('.jump-link');
+  const ids = ['overview','press','artifacts','notify'];
+  window.addEventListener('scroll', () => {
+    let cur = 'overview';
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 130) cur = id;
+    });
+    jumpLinks.forEach(l => {
+      const href = l.getAttribute('href').replace('#','');
+      l.classList.toggle('active', href === cur || (href === 'notify' && cur === 'notify'));
+    });
+  });
+  function handleNotify() {
+    const input = document.getElementById('emailInput');
+    const val = input.value.trim();
+    if (!val || !val.includes('@')) {
+      input.style.borderColor = 'rgba(232,96,10,0.7)';
+      input.focus();
+      return;
+    }
+    const btn = document.querySelector('.btn-notify');
+    btn.textContent = "You're on the list!";
+    btn.style.background = 'var(--teal)';
+    btn.disabled = true;
+    input.disabled = true;
+    input.style.opacity = '0.5';
+  }
+</script>
 </body>
 </html>
