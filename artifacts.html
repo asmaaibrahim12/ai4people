@@ -416,7 +416,7 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
       l.classList.toggle('active', href === cur || (href === 'notify' && cur === 'notify'));
     });
   });
-  function handleNotify() {
+  async function handleNotify() {
     const input = document.getElementById('emailInput');
     const val = input.value.trim();
     if (!val || !val.includes('@')) {
@@ -425,11 +425,31 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
       return;
     }
     const btn = document.querySelector('.btn-notify');
-    btn.textContent = "You're on the list!";
-    btn.style.background = 'var(--teal)';
+    btn.textContent = 'Sending…';
     btn.disabled = true;
-    input.disabled = true;
-    input.style.opacity = '0.5';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'beea8436-a90e-4494-b8af-d39266ff516e',
+          subject: 'New artifact notify signup',
+          email: val
+        })
+      });
+      if (res.ok) {
+        btn.textContent = "You're on the list!";
+        btn.style.background = 'var(--teal)';
+        input.disabled = true;
+        input.style.opacity = '0.5';
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+    }
   }
 </script>
 </body>
