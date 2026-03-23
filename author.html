@@ -172,6 +172,46 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94)
 .speaking-desc { font-size: 13px; color: var(--ink-3); line-height: 1.6; font-weight: 300; }
 .speaking-topics { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 5px; }
 .topic-tag { font-size: 11px; padding: 3px 9px; border-radius: 20px; background: var(--surface-3); color: var(--ink-3); border: 1px solid var(--border); }
+/* EVENTS */
+.events-title { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--ink); margin-bottom: 20px; }
+.events-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 52px; }
+.event-card {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 18px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 22px;
+  background: var(--surface);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.event-card:hover { border-color: var(--border-md); box-shadow: 0 4px 16px rgba(17,18,20,0.07); }
+.event-img {
+  width: 200px;
+  height: 110px;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+.event-img-placeholder {
+  width: 200px;
+  height: 110px;
+  border-radius: var(--radius);
+  background: var(--surface-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.event-info { min-width: 0; }
+.event-date { font-size: 12px; font-weight: 500; color: var(--ink-3); margin-bottom: 4px; letter-spacing: 0.02em; }
+.event-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.event-venue { font-size: 13px; color: var(--ink-3); font-weight: 300; margin-bottom: 6px; }
+.event-topic { font-size: 12px; color: var(--ink-3); font-weight: 300; font-style: italic; }
+.event-status { font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 20px; white-space: nowrap; align-self: start; }
+.event-status-done { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-mid); }
+.event-status-upcoming { background: var(--orange-light); color: var(--orange); border: 1px solid var(--orange-mid); }
 /* CTA */
 .about-cta {
   background: var(--orange-light);
@@ -228,6 +268,9 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
   .nav-links a { font-size: 12.5px; padding: 5px 10px; }
   .about-cta { flex-direction: column; align-items: flex-start; }
   .wildera-strip { flex-direction: column; align-items: flex-start; padding: 18px 20px; }
+  .event-card { grid-template-columns: 1fr; gap: 12px; }
+  .event-img, .event-img-placeholder { width: 100%; height: 160px; }
+  .event-status { align-self: flex-start; }
   .about-hero h1 { font-size: 28px; }
 }
 @media (max-width: 400px) {
@@ -314,6 +357,31 @@ footer { border-top: 1px solid var(--border); background: var(--surface-2); }
         <span class="topic-tag">Governance</span>
       </div>
     </div>
+  </div>
+  <h3 class="events-title">Speaking & Events</h3>
+  <div class="events-list">
+    <a href="https://www.linkedin.com/posts/asmaa-ibrahim_enterpriseai-aiadoption-digitaltransformation-activity-7435980092222316544-uCnF" target="_blank" rel="noopener" class="event-card">
+      <img src="images/1772755847555.jpeg" alt="Asmaa Ibrahim speaking at Politecnico di Milano panel" class="event-img">
+      <div class="event-info">
+        <div class="event-date">3 March 2026</div>
+        <div class="event-name">AI Adoption in Enterprise — Panel</div>
+        <div class="event-venue">Politecnico di Milano, Milan, Italy</div>
+        <div class="event-topic">Intelligent Automation Community</div>
+      </div>
+      <span class="event-status event-status-done">Completed</span>
+    </a>
+    <a href="https://munichtechexpo.com/speakers" target="_blank" rel="noopener" class="event-card">
+      <div class="event-img-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="event-info">
+        <div class="event-date">20–21 September 2026</div>
+        <div class="event-name">MunichTech Expo 2026</div>
+        <div class="event-venue">Munich, Germany</div>
+        <div class="event-topic">Speaker</div>
+      </div>
+      <span class="event-status event-status-upcoming">Upcoming</span>
+    </a>
   </div>
   <div class="about-cta">
     <div class="about-cta-text">
